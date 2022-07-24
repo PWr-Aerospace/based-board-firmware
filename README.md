@@ -8,11 +8,11 @@ Currently, configired for STM32F401CCU6 STM32 BlackPill.
 ## Prerequisites
 Firstly, clone this repo:
 
-    git clone <REPO_LINL>
+    git clone https://github.com/Aerospace-ASP/Firmware.git
 
 Change directory:
 
-    cd <DIR_NAME>
+    cd Firmware
 
 To build the image for the target ARM architecture a cross-compilation toolchain is needed. To set this up, run toolchain/setup_arm_gcc.sh. This needs to be done only once after this project is cloned.
 

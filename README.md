@@ -44,3 +44,7 @@ When you finished - commit changes on own branch only! NOT on master! If you wan
 
 Supported OS: Linux based, macOS
 Partially supported (not tested xD): Windows
+
+## Future toolchain improvements
+
+https://github.com/ucgosupl/stm32f4_template

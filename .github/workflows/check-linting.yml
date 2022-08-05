@@ -7,16 +7,10 @@ on:
         branches: ["main", "develop", "release"]
 
 jobs:
-    checkout-and-check-formatting:
+    linting-check:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Run clang-tidy linting check
-              uses: HorstBaerbel/action-clang-tidy@1.2
-              # These are optional (defaults displayed)
-              with:
-                  scandir: "src"
-                  builddir: "build"
-                  # excludedirs: ""
-                  extensions: "c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx"
-                  # cmakeoptions: ""
+            - name: Run clang-format formatting check
+            - run: sudo apt-get update
+            - run: sudo apt-get install -y clang-tidy

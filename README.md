@@ -38,7 +38,7 @@ You need to use the provided toolchain file and define the build type (Debug or 
 
 Install CLion
 
-Run CLion and load project (not working, alignment needed!)
+Run CLion and load project
 
 1. CMake -> CMake Settings
 * Set CMake Options -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc-toolchain.cmake

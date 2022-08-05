@@ -1,4 +1,4 @@
-name: clang-format Check
+name: 📝 Check clang-format
 
 on:
     pull_request:
@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Run clang-format style check for C/C++/Protobuf programs.
+            - name: Run clang-format formatting check
               uses: jidicula/clang-format-action@v4.8.0
               with:
                   clang-format-version: "13"

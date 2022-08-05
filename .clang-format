@@ -1,9 +1,9 @@
 # Run manually to reformat a file:
 # clang-format -i --style=file <file>
-Language:        Cpp
-BasedOnStyle:  Google
+Language: Cpp
+BasedOnStyle: Google
 IndentWidth: 4
-ColumnLimit: 160
+ColumnLimit: 90
 ReflowComments: false
 AllowShortIfStatementsOnASingleLine: Never
 SpaceBeforeParens: Never

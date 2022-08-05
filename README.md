@@ -6,6 +6,7 @@ Currently, configired for STM32F401CCU6 STM32 BlackPill.
 # Building step-by-step
 
 Supported OS: Linux based, macOS
+
 Partially supported (not tested xD): Windows
 
 ## Prerequisites

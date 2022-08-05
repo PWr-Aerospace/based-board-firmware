@@ -1,4 +1,3 @@
-# Run clang-tidy
 name: 👔 Check clang-tidy
 
 on:
@@ -8,6 +7,7 @@ on:
 
 jobs:
     linting-check:
+        name: Linting Check
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2

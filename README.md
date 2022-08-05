@@ -5,6 +5,9 @@ Currently, configired for STM32F401CCU6 STM32 BlackPill.
 
 # Building step-by-step
 
+Supported OS: Linux based, macOS
+Partially supported (not tested xD): Windows
+
 ## Prerequisites
 Firstly, clone this repo:
 
@@ -30,6 +33,8 @@ You need to use the provided toolchain file and define the build type (Debug or 
 
     git checkout -b branchName
     
+## IDE using
+
 Install CLion
 
 Run CLion and load project (not working, alignment needed!)
@@ -41,9 +46,6 @@ Run CLion and load project (not working, alignment needed!)
 3. Click the bug and enjoy!
 
 When you finished - commit changes on own branch only! NOT on master! If you want to merge - make pull request
-
-Supported OS: Linux based, macOS
-Partially supported (not tested xD): Windows
 
 ## Future toolchain improvements
 

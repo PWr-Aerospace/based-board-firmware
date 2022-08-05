@@ -11,6 +11,9 @@ extern "C" {
 
 // #define OBC_CLOCK 80000000U
 
+#define PIN_LED_Pin GPIO_PIN_13
+#define PIN_LED_GPIO_Port GPIOC
+
 void bsp_init_cpu();
 
 void bsp_panic();

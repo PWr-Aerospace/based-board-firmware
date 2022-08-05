@@ -36,7 +36,8 @@ void prvGetRegistersFromStack( uint32_t *pulFaultStackAddress )
 * in C as a pointer. We also extract the LR value as second
 * parameter.
 */
-__weak void cpu_fault_handler() {
+__weak void cpu_fault_handler()
+{
 #if defined (__GNUC__)
     __asm
     (
@@ -64,42 +65,98 @@ __weak void cpu_fault_handler() {
 #endif
 }
 
-void MemManage_Handler() {
+/******************************************************************************/
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */
+/******************************************************************************/
+/**
+  * @brief This function handles Non maskable interrupt.
+  */
+void NMI_Handler(void)
+{
+    while (1)
+    {
+    }
+}
+
+/**
+  * @brief This function handles Hard fault interrupt.
+  */
+void HardFault_Handler(void)
+{
     cpu_fault_handler();
 }
 
-void BusFault_Handler() {
+/**
+  * @brief This function handles Memory management fault.
+  */
+void MemManage_Handler(void)
+{
     cpu_fault_handler();
 }
 
-void UsageFault_Handler() {
+/**
+  * @brief This function handles Pre-fetch fault, memory access fault.
+  */
+void BusFault_Handler(void)
+{
     cpu_fault_handler();
 }
 
-void NMI_Handler() {
-}
-
-void HardFault_Handler() {
+/**
+  * @brief This function handles Undefined instruction or illegal state.
+  */
+void UsageFault_Handler(void)
+{
     cpu_fault_handler();
 }
 
-__weak void SVC_Handler(void);
+/**
+  * @brief This function handles System service call via SWI instruction.
+  */
+void SVC_Handler(void)
+{
 
-__weak void PendSV_Handler(void);
-
-__weak void SysTick_Handler(void);
-
-void SVC_Handler() {
 }
 
-void DebugMon_Handler() {
+/**
+  * @brief This function handles Debug monitor.
+  */
+void DebugMon_Handler(void)
+{
+
 }
 
-void PendSV_Handler() {
+/**
+  * @brief This function handles Pendable request for system service.
+  */
+void PendSV_Handler(void)
+{
+
 }
 
-void Error_Handler(void) {
+/**
+  * @brief This function handles System tick timer.
+  */
+void SysTick_Handler(void)
+{
+    HAL_IncTick();
+}
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  */
+void Error_Handler(void)
+{
     __disable_irq();
     while (1) {
     }
 }
+
+/******************************************************************************/
+/* STM32F4xx Peripheral Interrupt Handlers                                    */
+/* Add here the Interrupt Handlers for the used peripherals.                  */
+/* For the available peripheral interrupt handler names,                      */
+/* please refer to the startup file (startup_stm32f4xx.s).                    */
+/******************************************************************************/
+
+

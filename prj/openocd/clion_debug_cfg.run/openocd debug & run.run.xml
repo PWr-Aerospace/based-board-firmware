@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="openocd debug &amp; run" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OBC" TARGET_NAME="OBC.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="OBC" RUN_TARGET_NAME="OBC.elf">
-    <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="$PROJECT_DIR$/prj/openocd_toCheck/stm32f4blackpill.cfg" reset-type="NONE" download-type="ALWAYS">
+    <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="$PROJECT_DIR$/prj/openocd/stm32f4blackpill.cfg" reset-type="NONE" download-type="ALWAYS">
       <debugger kind="GDB" isBundled="true" />
     </openocd>
     <method v="2">

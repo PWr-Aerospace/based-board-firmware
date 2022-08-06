@@ -10,7 +10,7 @@ jobs:
         name: Hardware flash
         runs-on: self-hosted
         container:
-            image: john15321/stm-development-amd64:alpine --platform linux/amd64
+            image: john15321/stm-development-arm64:alpine
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000

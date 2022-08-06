@@ -11,6 +11,8 @@ jobs:
         runs-on: self-hosted
         steps:
             - uses: actions/checkout@v2
-            - run: mkdir build && cd build
-            - run: cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake ..
-            - run: make -j`nproc` && st-flash write OBC.bin 0x8000000
+            - run: mkdir build && \
+            cd build && \
+            cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && \
+            make -j`nproc` && \
+            st-flash write OBC.bin 0x8000000

@@ -1,0 +1,8 @@
+build/
+cmake/
+docs/
+img/
+srd/bsp/
+toolchain/
+prj/
+dockerfiles/

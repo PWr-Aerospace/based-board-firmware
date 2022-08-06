@@ -1,0 +1,20 @@
+name: 📟 Build and flash on hardware
+
+on:
+    pull_request:
+    push:
+        branches: ["main", "develop", "release"]
+
+jobs:
+    formatting-check:
+        name: Hardware flash
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v2
+            # Check if needed tools are present if not install them
+            - run: st-flash --version || sudo apt install -y stlink-tools
+            - run: cmake --version || sudo apt install -y cmake
+            - run: arm-none-eabi-gcc --version || sudo apt install -y gcc-arm-none-eabi
+            # Build the project and flash it
+            - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000
+

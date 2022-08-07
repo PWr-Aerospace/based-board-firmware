@@ -1,0 +1,7 @@
+version: "1.1"
+services:
+  joblol:
+    image: "debian:latest"
+    container_name: yourmom
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"

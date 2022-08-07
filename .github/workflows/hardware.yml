@@ -12,7 +12,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             # Check if needed tools are present if not install them
-            - run: st-flash || sudo apt install -y stlink-tools
+            - run: st-flash --version || sudo apt install -y stlink-tools
             - run: cmake --version || sudo apt install -y cmake
             - run: arm-none-eabi-gcc --version || sudo apt install -y gcc-arm-none-eabi
             # Build the project and flash it

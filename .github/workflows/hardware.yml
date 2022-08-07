@@ -10,7 +10,9 @@ jobs:
         name: Hardware flash
         runs-on: self-hosted
         container:
-            image: john15321/stm-development-arm64:alpine
+            image: debian:latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v2
+            - run: apt-get update
+            - run: apt-get install -y stlink-tools gcc-arm-none-eabi cmake git
             - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000

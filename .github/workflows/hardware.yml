@@ -20,4 +20,4 @@ jobs:
                   mkdir build
                   cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc-toolchain.cmake .
                   make -j`nproc`
-                  st-flash write buildOBC.bin 0x8000000
+                  st-flash write build/OBC.bin 0x8000000

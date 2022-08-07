@@ -27,4 +27,7 @@ jobs:
             - if: matrix.os == 'windows-latest'
               run: echo "fuck windows"
             - if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-              run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc`
+              run: |
+                  mkdir build
+                  cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc-toolchain.cmake .
+                  make -j`nproc`

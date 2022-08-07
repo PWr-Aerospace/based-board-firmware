@@ -9,8 +9,8 @@ jobs:
     formatting-check:
         name: Hardware flash
         runs-on: self-hosted
-        container:
-            image: debian:latest
+        # container:
+        #     image: debian:latest
         steps:
             - uses: actions/checkout@v2
             - run: apt-get update

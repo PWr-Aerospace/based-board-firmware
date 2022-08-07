@@ -14,5 +14,9 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: apt-get update
-            - run: apt-get install -y stlink-tools gcc-arm-none-eabi cmake git
+            - run: apt-get install -y stlink-tools gcc-arm-none-eabi cmake
             - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000
+
+
+
+# "/dev/bus/usb/$(lsusb | grep ST-LINK | cut -d ' ' -f 2,4 | tr -d : | sed -r 's/[ ]+/\//g')"

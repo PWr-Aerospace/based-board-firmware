@@ -1,4 +1,4 @@
-name: 🛠 Build and flash on hardware
+name: 🛠 Build firmware
 
 on:
     pull_request:
@@ -7,14 +7,15 @@ on:
 
 jobs:
     formatting-check:
-        name: Hardware flash
-        runs-on: john15321/stm-development-amd64:alpine
+        name: Build 
+        runs-on: ubuntu-latest
+          # image: john15321/stm-development-amd64:debian 
         # container:
         #     image: debian:latest
         steps:
             - uses: actions/checkout@v2
-            # - run: apt-get update
-            # - run: apt-get install -y stlink-tools gcc-arm-none-eabi cmake
+            - run: apt-get update
+            - run: apt-get install -y stlink-tools gcc-arm-none-eabi cmake
             - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000
 
 

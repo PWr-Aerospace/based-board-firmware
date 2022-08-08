@@ -10,7 +10,7 @@ jobs:
         name: Build
         strategy:
             matrix:
-                os: [ubuntu-latest, macos-latest, windows-latest]
+                os: [ubuntu-latest, macos-latest]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v2
@@ -24,7 +24,4 @@ jobs:
               # Using 'latest' branch, the most recent CMake and ninja are installed.
               uses: lukka/get-cmake@latest
             # Build the project and flash it
-            - if: matrix.os == 'windows-latest'
-              run: echo "fuck windows"
-            - if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-              run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc`
+            - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc`

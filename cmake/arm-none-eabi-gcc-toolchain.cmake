@@ -1,14 +1,29 @@
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-set(TOOLCHAIN_PATH "/usr")
+set(TOOLCHAIN_PATH "/opt/homebrew/")
 
-SET(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/bin/arm-none-eabi-gcc)
-SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}/bin/arm-none-eabi-g++)
-SET(CMAKE_ASM_COMPILER ${TOOLCHAIN_PATH}/bin/arm-none-eabi-gcc)
-SET(CMAKE_OBJECT_COPY ${TOOLCHAIN_PATH}/bin/arm-none-eabi-objcopy)
-set(CMAKE_OBJDUMP ${TOOLCHAIN_PATH}/bin/arm-none-eabi-objdump)
-SET(CMAKE_OBJECT_SIZE ${TOOLCHAIN_PATH}/bin/arm-none-eabi-size)
+
+execute_process (
+    COMMAND bash -c "dirname $(which arm-none-eabi-gcc) | tr -d '\n'"
+    OUTPUT_VARIABLE outVar
+)
+
+if(outVar STREQUAL "")
+    set(TOOLCHAIN_PATH "${CMAKE_CURRENT_LIST_DIR}/../toolchain/gcc-arm-none-eabi")
+else()
+    message("Found toolchain at: ${outVar}")
+    set(TOOLCHAIN_PATH "${outVar}")
+endif()
+
+
+
+SET(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
+SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-g++)
+SET(CMAKE_ASM_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
+SET(CMAKE_OBJECT_COPY ${TOOLCHAIN_PATH}/arm-none-eabi-objcopy)
+set(CMAKE_OBJDUMP ${TOOLCHAIN_PATH}/arm-none-eabi-objdump)
+SET(CMAKE_OBJECT_SIZE ${TOOLCHAIN_PATH}/arm-none-eabi-size)
 
 set(CMAKE_FIND_ROOT_PATH ${TOOLCHAIN_PATH})
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

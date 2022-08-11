@@ -57,7 +57,12 @@ You need to use the provided toolchain file and define the build type (Debug or 
 ```bash
 mkdir build && \
 cd build && \
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && \
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake ..
+```
+
+Now a `Makefile` should be generated, which you can use to actually build the project by running it (the `-jnrproc` part simply tell the compiler that it can use all of your cores to speed up the compilation):
+
+```bash
 make -j`nrpoc`
 ```
 

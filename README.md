@@ -94,7 +94,13 @@ Run CLion and load project
 
 3. Click two times on `prj/openocd/clion_debug_cfg.run/openocd debug & run.run.xml` and load it (right-hand side)
 
-4. Click the bug and enjoy!
+4. Go to some code and create a breakpoint, click the debug symbol:
+
+    ![img/](img/debugging.png)
+
+5. CLion should start `openocd` and start remote debugging on the STM:
+
+    ![sdfg](img/final_debug.png)
 
 When you finished - commit changes on own branch only! NOT on master! If you want to merge - make pull request
 

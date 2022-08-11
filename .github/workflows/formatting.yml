@@ -16,4 +16,4 @@ jobs:
               # with:
               #     clang-format-version: "13"
               #     check-path: "src"
-              run: run-clang-format.py -r src --exclude src/bsp
+              run: ./run-clang-format.py -r src --exclude src/bsp

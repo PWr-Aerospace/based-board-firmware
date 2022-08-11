@@ -8,13 +8,10 @@ PCB design for the project available [here](https://github.com/Aerospace-ASP/Har
 
 # Building step-by-step
 
-Supported OS: Linux based, macOS
-
-Partially supported (not tested xD): Windows
+Supported development platforms: Linux, macOS
+*NOTE*: Windows is not supported for this project
 
 ## Install dependencies
-
-*NOTE*: Windows is not supported for this project
 
 `Ubuntu`/`Debian`:
 

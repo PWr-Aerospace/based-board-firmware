@@ -123,9 +123,13 @@ Docker images for development are available on Docker Hub here:
 
 To locally check if the source code is formatted properly:
 
-  ./run-clang-format.py -r src --exclude src/bsp
+```bash
+./run-clang-format.py -r src --exclude src/bsp
+```
 
 To format something:
 
-  clang-format -i --style=file ./src/main.cpp
+```bash
+clang-format -i --style=file ./src/main.cpp
+```
 

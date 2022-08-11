@@ -3,7 +3,6 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 
 set(TOOLCHAIN_PATH "/opt/homebrew/")
 
-
 execute_process (
     COMMAND bash -c "dirname $(which arm-none-eabi-gcc) | tr -d '\n'"
     OUTPUT_VARIABLE outVar
@@ -15,8 +14,6 @@ else()
     message("Found toolchain at: ${outVar}")
     set(TOOLCHAIN_PATH "${outVar}")
 endif()
-
-
 
 SET(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
 SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-g++)

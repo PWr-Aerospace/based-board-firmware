@@ -25,3 +25,4 @@ jobs:
               uses: lukka/get-cmake@latest
             # Build the project and flash it
             - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc`
+  

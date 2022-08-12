@@ -107,6 +107,14 @@ Run CLion and load project
 
     ![sdfg](img/final_debug.png)
 
+
+*NOTE*: If you encounter any issues with/errors saying that `interface/stlink.cfg` cannot
+be found go into the `prj/openocd/stm32f4blackpill.cfg` (or a different local `.cfg` file
+according to which board you are trying to use) and comment out the current `source`
+command for the `stlink.cfg` and uncomment another so that it searches for a
+different configuration file (it simply can be names slightly differently on your system).
+
+
 When you finished - commit changes on own branch only! NOT on master! If you want to merge - make pull request
 
 <!-- ## Future toolchain improvements

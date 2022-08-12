@@ -14,7 +14,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     arm_gcc_dir="${toolchain_dir}/gcc-arm-none-eabi"
 
     echo "Downloading arm toolchain for Linux"
-    arm_gcc_url="https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2?revision=ca0cbf9c-9de2-491c-ac48-898b5bbc0443&la=en&hash=68760A8AE66026BCF99F05AC017A6A50C6FD832A"
+    arm_gcc_url="https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-$(uname -m)-linux.tar.bz2"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     toolchain_dir=$(dirname "$(readlinkorreal "$0")")
     arm_gcc_dir="${toolchain_dir}/gcc-arm-none-eabi"
@@ -25,7 +25,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # sudo chown -R `whoami`:admin /usr/local/share
     # sudo chown -R `whoami`:admin /usr/local/opt
     echo "Downloading arm toolchain for macOS"
-    arm_gcc_url="https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-mac.tar.bz2?revision=48a4e09a-eb5a-4eb8-8b11-d65d7e6370ff&la=en&hash=8AACA5F787C5360D2C3C50647C52D44BCDA1F73F"
+    arm_gcc_url="https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-mac.tar.bz2"
 else
         echo "Unknown OS"
 fi

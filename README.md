@@ -143,6 +143,6 @@ To locally check if the source code is formatted properly:
 To format something:
 
 ```bash
-clang-format -i --style=file ./src/main.cpp
+clang-format -i --style=.clang-format /src/main.cpp
 ```
 

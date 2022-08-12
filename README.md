@@ -124,14 +124,6 @@ When you finished - commit changes on own branch only! NOT on master! If you wan
 to installl
 lbzip2 cmake -->
 
-# Additional
-
-Docker images for development are available on Docker Hub here:
-
-* <https://hub.docker.com/repository/docker/john15321/stm-development>
-* <https://hub.docker.com/repository/docker/john15321/stm-development-arm64>
-* <https://hub.docker.com/repository/docker/john15321/stm-development-amd64>
-
 # Formatting source code
 
 To locally check if the source code is formatted properly:
@@ -145,4 +137,12 @@ To format something:
 ```bash
 clang-format -i /src/main.cpp
 ```
+
+# Additional
+
+Docker images for development are available on Docker Hub here:
+
+* <https://hub.docker.com/repository/docker/john15321/stm-development>
+* <https://hub.docker.com/repository/docker/john15321/stm-development-arm64>
+* <https://hub.docker.com/repository/docker/john15321/stm-development-amd64>
 

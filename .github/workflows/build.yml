@@ -1,0 +1,28 @@
+name: 🔨 Build firmware
+
+on:
+    pull_request:
+    push:
+        branches: ["main", "develop", "release"]
+
+jobs:
+    build-check:
+        name: Build
+        strategy:
+            matrix:
+                os: [ubuntu-latest]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - uses: actions/checkout@v2
+            # Install dependencies
+            - name: Install arm-none-eabi-gcc
+              uses: fiam/arm-none-eabi-gcc@v1
+              with:
+                  # The arm-none-eabi-gcc release to use
+                  release: "10-2020-q4"
+            - name: Get latest CMake and ninja
+              # Using 'latest' branch, the most recent CMake and ninja are installed.
+              uses: lukka/get-cmake@latest
+            # Build the project and flash it
+            - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc`
+  

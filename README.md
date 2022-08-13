@@ -8,7 +8,7 @@ PCB design for the project available [here](https://github.com/Aerospace-ASP/Har
 
 # Table of Contents
 
-For a table of contents of the README lick the button:
+For a table of contents of the README click the button:
 
 ![tbofcnts](img/table_of_contents.png)
 
@@ -135,11 +135,11 @@ The short description of the branching strategy is as follows. The feature branc
 
 TL;DR
 
-If you wan to work on something create an issue for that. And fill it out like this:
+If you want to work on something create an issue for that. And fill it out like this:
 (example issue: <https://github.com/Aerospace-ASP/Firmware/issues/6>)
 
 1. Fill out the name for the issue
-2. Make sure you add a link to the task from the task boar. Here is how you can get that link:
+2. Make sure you add a link to the task from the task board. Here is how you can get that link:
     ![taskboardlink](img/taskboard_link.png)
 3. Provide a description for the task and what are your plans etc.
 4. If you know you will be working on that task assign yourself

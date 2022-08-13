@@ -107,15 +107,66 @@ Run CLion and load project
 
     ![sdfg](img/final_debug.png)
 
-
 *NOTE*: If you encounter any issues with/errors saying that `interface/stlink.cfg` cannot
 be found go into the `prj/openocd/stm32f4blackpill.cfg` (or a different local `.cfg` file
 according to which board you are trying to use) and comment out the current `source`
 command for the `stlink.cfg` and uncomment another so that it searches for a
 different configuration file (it simply can be names slightly differently on your system).
 
+Now you should have a working setup for development.
 
-When you finished - commit changes on own branch only! NOT on master! If you want to merge - make pull request
+# Branching
+
+The branching strategy looks like this:
+
+The short description of the branching strategy is as follows. The feature branches are a category of branches that branch out of the `develop` branch. A person branches out from develop, works on a given feature on their brnach and when the feature is ready they submit a Pull Request to merge again into the develop branch. After the review process is finished the commits from the branch should be squashed and then merged into `develop` (GitHubs webUI provides that). Therefore each commit that lands on the `develop` branch is an addition of a feature, documentation but etc.. When an arbitrary set of new features is completed and could be deemed as a new release (release cycle should follow the [semver](https://semver.org/) convention) it should be merged into `main` (of course it should also follow the process of a Pull Request and reviews) when it is merged into `main` additional testing (for example flashing the actual hardware with the source code etc), validation etc. should be done. If the state of the code is deemed safe and proper it should be released as a new version of the software. This should be done by tagging which marks a given commit a release candidate which should automatically trigger a series of CI/CD checks and if they succeed the commit will be merged into the `release` branch and the software package will be finally released.
+
+![branching](img/branching.png)
+
+TL;DR
+
+If you wan to work on something create an issue for that. And fill it out like this:
+(example issue: <https://github.com/Aerospace-ASP/Firmware/issues/6>)
+
+1. Fill out the name for the issue
+2. Make sure you add a link to the task from the task boar. Here is how you can get that link:
+    ![taskboardlink](img/taskboard_link.png)
+3. Provide a description for the task and what are your plans etc.
+4. If you know you will be working on that task assign yourself
+5. Add applicable labels to the task, e.g. if you are solving a bug then add `Bug`, if adding a new functionality add `enhancement` etc.
+6. Assign the task to the `Logger` project
+7. If applicable assign the task to a given milestone
+8. Submit the issue/task
+
+![issue](img/task_issue_creation.png)
+
+Then when you have created an issue for you task click the `Create new branch` in the lower right corner:
+
+![cr](img/create_a_branch.png)
+
+Click on the `Change branch source`, then:
+
+1. Make sure that the actual branch name is concise and fairly short
+2. *Make sure that you branch otu from the `develop` branch!*
+3. Make sure `Checkout locally` is selected
+4. Click the create branch button
+
+![kurwa mac jak tego nie zrozumieja to ich zabije](img/actual_create_branch.png)
+
+Now a branch has been created for you, copy the commands needed for you to use it:
+
+![asd](img/checkout_kurwa.png)
+
+In you cloned repository open a terminal and paste the copied commands. Now you should be on your newly created branch and you can start working. To make sure you are on that branch run:
+
+```bash
+$ git brach
+* 16-task-number-do-something-with-something
+...
+```
+
+The branch on which you currently reside will be marked with a `*`.
+Next simply keep working on your branch, push commits, and when you think you are ready create a Pull Request.
 
 <!-- ## Future toolchain improvements
 
@@ -145,4 +196,3 @@ Docker images for development are available on Docker Hub here:
 * <https://hub.docker.com/repository/docker/john15321/stm-development>
 * <https://hub.docker.com/repository/docker/john15321/stm-development-arm64>
 * <https://hub.docker.com/repository/docker/john15321/stm-development-amd64>
-

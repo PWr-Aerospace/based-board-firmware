@@ -160,7 +160,7 @@ Now a branch has been created for you, copy the commands needed for you to use i
 In you cloned repository open a terminal and paste the copied commands. Now you should be on your newly created branch and you can start working. To make sure you are on that branch run:
 
 ```bash
-$ git brach
+$ git branch
 * 16-task-number-do-something-with-something
 ...
 ```

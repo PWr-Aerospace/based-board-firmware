@@ -72,7 +72,7 @@ make -j`nrpoc`
 git checkout branch_name
 ```
 
-## IDE using
+## IDE usage
 
 If you know what you are doing you can use any IDE you want but we do not guarantee that you will have full support. If you want that guarantee you can use [CLion](https://www.jetbrains.com/clion/) it is free to use for students.
 

@@ -6,6 +6,12 @@ Currently, configured for STM32F401CCU6 STM32 BlackPill.
 
 PCB design for the project available [here](https://github.com/Aerospace-ASP/Hardware).
 
+# Table of Contents
+
+For a table of contents of the README lick the button:
+
+![tbofcnts](img/table_of_contents.png)
+
 # Building step-by-step
 
 Supported development platforms: Linux, macOS
@@ -117,11 +123,15 @@ Now you should have a working setup for development.
 
 # Branching
 
+## The branching strategy
+
 The branching strategy looks like this:
 
 The short description of the branching strategy is as follows. The feature branches are a category of branches that branch out of the `develop` branch. A person branches out from develop, works on a given feature on their branch and when the feature is ready they submit a Pull Request to merge again into the develop branch. After the review process is finished the commits from the branch should be squashed and then merged into `develop` (GitHubs webUI provides that). Therefore each commit that lands on the `develop` branch is an addition of a feature, documentation but etc.. When an arbitrary set of new features is completed and could be deemed as a new release (release cycle should follow the [semver](https://semver.org/) convention) it should be merged into `main` (of course it should also follow the process of a Pull Request and reviews) when it is merged into `main` additional testing (for example flashing the actual hardware with the source code etc), validation etc. should be done. If the state of the code is deemed safe and proper it should be released as a new version of the software. This should be done by tagging which marks a given commit a release candidate which should automatically trigger a series of CI/CD checks and if they succeed the commit will be merged into the `release` branch and the software package will be finally released.
 
 ![branching](img/branching.png)
+
+## Creating a task
 
 TL;DR
 
@@ -139,6 +149,8 @@ If you wan to work on something create an issue for that. And fill it out like t
 8. Submit the issue/task
 
 ![issue](img/task_issue_creation.png)
+
+## Creating a branch and using it
 
 Then when you have created an issue for you task click the `Create new branch` in the lower right corner:
 

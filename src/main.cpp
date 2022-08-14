@@ -1,7 +1,13 @@
 #include "bsp.h"
 
+int add(int a,int b)
+{
+    return a+b;
+}
+
 int main()
 {
+
     bsp_init_cpu();
 
     while(true)

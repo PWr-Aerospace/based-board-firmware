@@ -85,7 +85,6 @@ If you know what you are doing you can use any IDE you want but we do not guaran
 Run CLion and load project
 
 1. CMake -> CMake Settings
-
     * Set CMake Options `-DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc-toolchain.cmake`
     * Set build directory to build
 
@@ -112,6 +111,7 @@ Run CLion and load project
 5. CLion should start `openocd` and start remote debugging on the STM:
 
     ![sdfg](img/final_debug.png)
+
 
 *NOTE*: If you encounter any issues with/errors saying that `interface/stlink.cfg` cannot
 be found go into the `prj/openocd/stm32f4blackpill.cfg` (or a different local `.cfg` file
@@ -179,6 +179,13 @@ $ git branch
 
 The branch on which you currently reside will be marked with a `*`.
 Next simply keep working on your branch, push commits, and when you think you are ready create a Pull Request.
+
+<!-- ## Future toolchain improvements
+
+<https://github.com/ucgosupl/stm32f4_template>
+
+to installl
+lbzip2 cmake -->
 
 <!-- ## Future toolchain improvements
 

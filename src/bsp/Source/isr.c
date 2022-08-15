@@ -1,5 +1,17 @@
 #include "stm32f4xx_hal.h"
 
+volatile uint8_t FatFsCnt = 0;
+volatile uint8_t Timer1, Timer2;
+
+void SDTimer_Handler(void)
+{
+  if(Timer1 > 0)
+    Timer1--;
+
+  if(Timer2 > 0)
+    Timer2--;
+}
+
 void prvGetRegistersFromStack( uint32_t *pulFaultStackAddress )
 {
     /* These are volatile to try and prevent the compiler/linker optimising them
@@ -139,6 +151,7 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+	SDTimer_Handler();
     HAL_IncTick();
 }
 

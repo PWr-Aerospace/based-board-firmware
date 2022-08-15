@@ -7,6 +7,7 @@ option(GENERATE_VERSION_HEADER "Generate version header"  ON)
 # project settings
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(ELF_FILE ${PROJECT_NAME}.elf)
 set(HEX_FILE ${PROJECT_NAME}.hex)
@@ -28,6 +29,10 @@ set(HAL
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
         )
 
 SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/prj/linker/STM32F401CCUX_FLASH.ld)
@@ -43,17 +48,34 @@ target_include_directories(CMSIS PUBLIC
 add_library(STARTUP
         3rdparty/CMSIS/Device/ST/STM32F4xx/Source/gcc/startup_stm32f401ccux.s)
 
+add_library(FATFS
+	3rdparty/FATFS/Src/diskio.c
+	3rdparty/FATFS/Src/fatfs.c
+	3rdparty/FATFS/Src/fatfs_sd.c
+	3rdparty/FATFS/Src/ff.c
+	3rdparty/FATFS/Src/ff_gen_drv.c
+	3rdparty/FATFS/Src/user_diskio.c
+	3rdparty/FATFS/Src/ccsbcs.c
+	3rdparty/FATFS/Src/syscall.c)
+
+target_include_directories(FATFS PUBLIC
+	3rdparty/FATFS/Inc
+	3rdparty/STM32F4xx_HAL_Driver/Inc
+	3rdparty/CMSIS/Device/ST/STM32F4xx/Include
+	3rdparty/CMSIS/Include)
+
 add_executable(${ELF_FILE} ${OBC_SRC} ${HAL} ${LINKER_SCRIPT})
 
 target_include_directories(${ELF_FILE} PUBLIC
         3rdparty/STM32F4xx_HAL_Driver/Inc
+        3rdparty/FATFS
         src/bsp
         src/bsp/configs
         3rdparty/CMSIS/Include
         3rdparty/CMSIS/Device/ST/STM32F4xx/Include
         )
 
-target_link_libraries(${ELF_FILE} STARTUP CMSIS)
+target_link_libraries(${ELF_FILE} STARTUP CMSIS FATFS)
 target_compile_options(${ELF_FILE} PRIVATE "-Wall" "-Wextra")
 
 add_custom_target(build

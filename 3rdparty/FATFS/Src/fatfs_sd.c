@@ -1,13 +1,13 @@
 #define TRUE  1
 #define FALSE 0
 #define bool BYTE
-#define SD_CS_Pin GPIO_PIN_8
-#define SD_CS_GPIO_Port GPIOA
 
 #include "stm32f4xx_hal.h"
 
 #include "diskio.h"
 #include "fatfs_sd.h"
+
+#include "bsp.h"
 
 extern SPI_HandleTypeDef hspi1;
 extern volatile uint8_t Timer1, Timer2;                    /* 10ms 마다 감소하는 타이머 */
@@ -567,6 +567,7 @@ DRESULT SD_disk_ioctl(BYTE drv, BYTE ctrl, void *buff)
 
         res = RES_OK;
       }
+      break;
 
     default:
       res = RES_PARERR;

@@ -60,6 +60,7 @@ add_library(FATFS
 
 target_include_directories(FATFS PUBLIC
 	3rdparty/FATFS/Inc
+	src/bsp
 	3rdparty/STM32F4xx_HAL_Driver/Inc
 	3rdparty/CMSIS/Device/ST/STM32F4xx/Include
 	3rdparty/CMSIS/Include)

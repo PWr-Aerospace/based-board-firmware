@@ -3,7 +3,7 @@
 // #define LD2_Pin GPIO_PIN_5
 // #define LD2_GPIO_Port GPIOA
 
-static inline void error_handler() {
+static inline void Error_Handler() {
     while(1)
         ;
 }
@@ -19,9 +19,14 @@ static void GPIO_Init()
 
     /* GPIO Ports Clock Enable */
     __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(PIN_LED_GPIO_Port, PIN_LED_Pin, GPIO_PIN_RESET);
+
+    /*Configure GPIO pin Output Level */
+    HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_RESET);
 
     /*Configure GPIO pin : PIN_LED_Pin */
     GPIO_InitStruct.Pin = PIN_LED_Pin;
@@ -29,6 +34,14 @@ static void GPIO_Init()
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(PIN_LED_GPIO_Port, &GPIO_InitStruct);
+
+    /*Configure GPIO pin : SD_CS_Pin */
+    GPIO_InitStruct.Pin = SD_CS_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(SD_CS_GPIO_Port, &GPIO_InitStruct);
+
 }
 
 /**

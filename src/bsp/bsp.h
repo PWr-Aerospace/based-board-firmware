@@ -14,6 +14,9 @@ extern "C" {
 #define PIN_LED_Pin GPIO_PIN_13
 #define PIN_LED_GPIO_Port GPIOC
 
+#define SD_CS_Pin GPIO_PIN_14
+#define SD_CS_GPIO_Port GPIOB
+
 void bsp_init_cpu();
 
 void bsp_panic();

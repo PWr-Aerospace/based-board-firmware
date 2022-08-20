@@ -1,0 +1,2 @@
+#!/bin/zsh
+git log --pretty='format:Hash   %h%nTitle:  %s%nAuthor: %an%Date:   %as%n' --no-merges --cherry-pick > CHANGELOG.md

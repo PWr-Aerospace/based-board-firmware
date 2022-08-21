@@ -1,3 +1,3 @@
 #!/bin/zsh
-echo "#Changelog\n" > CHANGELOG.md
-git log --pretty='format:Hash    %h%nTitle:  %s%nAuthor: %an%nDate:   %as%n' --no-merges --cherry-pick >> CHANGELOG.md
+echo "# Changelog\n" > CHANGELOG.md
+git log --pretty='format:## Title:  **%s**%nHash    %h%nAuthor: %an%nDate:   %as%n' --no-merges --cherry-pick >> CHANGELOG.md

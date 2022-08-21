@@ -12,14 +12,7 @@ jobs:
             matrix:
                 os: [ubuntu-latest]
                 compiler_version:
-                    [
-                        latest,
-                        11.3.Rel1,
-                        11.2-2022.02,
-                        10.3-2021.10,
-                        10-2020-q4,
-                        9-2019-q4,
-                    ]
+                    [latest, 11.2-2022.02, 10.3-2021.10, 10-2020-q4, 9-2019-q4]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v2

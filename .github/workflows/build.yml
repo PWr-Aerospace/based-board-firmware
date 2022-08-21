@@ -14,10 +14,10 @@ jobs:
                 compiler_version: [
                         latest,
                         11.2-2022.02, # Used by alpine:latest
-                        10.3-2021.10,
+                        # 10.3-2021.10,
                         10.3-2021.07, # Used by brew and ubuntu:latest
                         10-2020-q4, # Used in our toolchain download script
-                        9-2019-q4,
+                        # 9-2019-q4,
                         18-2019-q3, # Used by raspbian
                         7-2018-q2, # Used by Debian 10 LTS
                     ]

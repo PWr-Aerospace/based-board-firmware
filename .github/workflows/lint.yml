@@ -10,6 +10,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
+            - name: Install arm-none-eabi-gcc ${{ matrix.compiler_version }}
+              uses: carlosperate/arm-none-eabi-gcc-action@v1
+              with:
+                  release: "latest"
             - name: Build the project and command json
               run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
             - name: Run clang-tidy

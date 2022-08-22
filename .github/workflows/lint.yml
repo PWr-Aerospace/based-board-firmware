@@ -7,6 +7,7 @@ on:
 
 jobs:
     cpp-linter:
+        name: 🔍 Linting Check
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3

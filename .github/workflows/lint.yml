@@ -6,17 +6,11 @@ on:
         branches: ["main", "develop", "release"]
 
 jobs:
-  cpp-linter:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cpp-linter/cpp-linter-action@v1
-        id: linter
-        with:
-          style: file
-
-#       - name: Fail fast?!
-#         if: steps.linter.outputs.checks-failed > 0
-#         run: echo "Some files failed the linting checks!"
-#         # for actual deployment
-#         # run: exit 1
+    cpp-linter:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Build the project and command json
+              run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+            - name: Run clang-tidy
+              run: ./run-clang-tidy.py -p ./build -header-filter='.*' -checks='google-*'

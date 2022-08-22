@@ -11,18 +11,26 @@ jobs:
         strategy:
             matrix:
                 os: [ubuntu-latest]
+                compiler_version: [
+                        latest,
+                        # 11.2-2022.02, # Used by alpine:latest
+                        # 10.3-2021.10,
+                        10.3-2021.07, # Used by brew and ubuntu:latest
+                        10-2020-q4, # Used in our toolchain download script
+                        # 9-2019-q4,
+                        8-2019-q3, # Used by raspbian
+                        # 7-2018-q2, # Used by Debian 10 LTS
+                    ]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v2
             # Install dependencies
-            - name: Install arm-none-eabi-gcc
-              uses: fiam/arm-none-eabi-gcc@v1
+            - name: Install arm-none-eabi-gcc ${{ matrix.compiler_version }}
+              uses: carlosperate/arm-none-eabi-gcc-action@v1
               with:
-                  # The arm-none-eabi-gcc release to use
-                  release: "10-2020-q4"
+                  release: "${{ matrix.compiler_version }}" # <-- The compiler release to use
             - name: Get latest CMake and ninja
               # Using 'latest' branch, the most recent CMake and ninja are installed.
               uses: lukka/get-cmake@latest
             # Build the project and flash it
             - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc`
-  

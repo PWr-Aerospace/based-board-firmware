@@ -48,7 +48,8 @@ target_include_directories(CMSIS PUBLIC
 add_library(STARTUP
         3rdparty/CMSIS/Device/ST/STM32F4xx/Source/gcc/startup_stm32f401ccux.s)
 
-add_library(FATFS
+add_library(SD_PROXY
+	src/proxy/sd.cpp
 	3rdparty/FATFS/Src/diskio.c
 	3rdparty/FATFS/Src/fatfs.c
 	3rdparty/FATFS/Src/fatfs_sd.c
@@ -58,9 +59,10 @@ add_library(FATFS
 	3rdparty/FATFS/Src/ccsbcs.c
 	3rdparty/FATFS/Src/syscall.c)
 
-target_include_directories(FATFS PUBLIC
+target_include_directories(SD_PROXY PUBLIC
 	3rdparty/FATFS/Inc
 	src/bsp
+	src/proxy
 	3rdparty/STM32F4xx_HAL_Driver/Inc
 	3rdparty/CMSIS/Device/ST/STM32F4xx/Include
 	3rdparty/CMSIS/Include)
@@ -70,13 +72,14 @@ add_executable(${ELF_FILE} ${OBC_SRC} ${HAL} ${LINKER_SCRIPT})
 target_include_directories(${ELF_FILE} PUBLIC
         3rdparty/STM32F4xx_HAL_Driver/Inc
         3rdparty/FATFS
+		src/proxy
         src/bsp
         src/bsp/configs
         3rdparty/CMSIS/Include
         3rdparty/CMSIS/Device/ST/STM32F4xx/Include
         )
 
-target_link_libraries(${ELF_FILE} STARTUP CMSIS FATFS)
+target_link_libraries(${ELF_FILE} STARTUP CMSIS SD_PROXY)
 target_compile_options(${ELF_FILE} PRIVATE "-Wall" "-Wextra")
 
 add_custom_target(build

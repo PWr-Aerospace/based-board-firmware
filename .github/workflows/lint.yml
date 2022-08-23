@@ -1,0 +1,17 @@
+name: 🔍 Check linting
+
+on:
+    pull_request:
+    push:
+        branches: ["main", "develop", "release"]
+
+jobs:
+    cpp-linter:
+        name: 🔍 Linting Check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Install cppcheck
+              run: sudo apt-get install -y cppcheck
+            - name: Run cppcheck
+              run: cppcheck -ibuild/CMakeFiles/ -iprj/ -i3rdparty -isrc/bsp/ --enable=all --inconclusive --library=posix  . -I ./3rdparty -I prj -I ./src/bsp/  --error-exitcode=1

@@ -1,0 +1,15 @@
+name: 🤰 Twoja stara
+
+on:
+    pull_request:
+    push:
+        branches: ["main", "develop", "release"]
+
+jobs:
+    formatting-check:
+        name: 🤰 Twoja stara
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: echo "twoja stara"
+            - run: wyjebsieprobujacwykonackomnedektoranieistnieje

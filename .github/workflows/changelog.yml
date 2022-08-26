@@ -1,0 +1,16 @@
+name: 📜 Check CHANGELOG update on PR
+
+on:
+    pull_request:
+        branches:
+            - "develop"
+
+jobs:
+    formatting-check:
+        name: 📜 Check CHANGELOG update on PR
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Check changelog diff compared to target branch
+            # - run: git diff --exit-code --name-only $CI_MERGE_REQUEST_DIFF_BASE_SHA $CI_COMMIT_SHA .gitignore &&  exit 1 || exit 0
+            - run: git diff --exit-code ${{ github.head_ref }} ${{ github.base_ref }} -- CHANGELOG.md

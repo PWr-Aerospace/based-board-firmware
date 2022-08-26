@@ -15,6 +15,7 @@ jobs:
               # - run: git diff --exit-code --name-only $CI_MERGE_REQUEST_DIFF_BASE_SHA $CI_COMMIT_SHA .gitignore &&  exit 1 || exit 0
               run: |
                   git fetch origin $GITHUB_HEAD_REF
-                  HEAD_SHA=$(git rev-parse HEAD)
-                  BASE_SHA=$(git rev-parse $GITHUB_BASE_REF)
-                  git diff --exit-code $HEAD_SHA $BASE_SHA -- CHANGELOG.md
+                  git diff develop 29-add-changelog-file --stat | grep CHANGELOG.md
+                #   HEAD_SHA=$(git rev-parse HEAD)
+                #   BASE_SHA=$(git rev-parse $GITHUB_BASE_REF)
+                #   git diff --exit-code $HEAD_SHA $BASE_SHA -- CHANGELOG.md

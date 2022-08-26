@@ -16,4 +16,3 @@ jobs:
               run: |
                   git fetch origin $GITHUB_HEAD_REF
                   git diff --exit-code $(git rev-parse HEAD) $(git rev-parse $GITHUB_BASE_REF) -- CHANGELOG.md
-                  ${{ github. }}

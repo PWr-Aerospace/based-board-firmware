@@ -12,8 +12,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Check changelog diff compared to target branch
-              # - run: git diff --exit-code --name-only $CI_MERGE_REQUEST_DIFF_BASE_SHA $CI_COMMIT_SHA .gitignore &&  exit 1 || exit 0
-                  # git diff develop 29-add-changelog-file --stat | grep CHANGELOG.md
+              # If the changelog is not edit the job should fail
               run: |
                   git fetch origin $GITHUB_BASE_REF
                   HEAD_SHA=$(git rev-parse HEAD)

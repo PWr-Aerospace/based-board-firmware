@@ -17,5 +17,5 @@ jobs:
               run: |
                   git fetch origin $GITHUB_BASE_REF
                   HEAD_SHA=$(git rev-parse HEAD)
-                  BASE_SHA=$(git rev-parse $GITHUB_BASE_REF)
+                  BASE_SHA=$(git rev-parse origin/$GITHUB_BASE_REF)
                   git diff --exit-code $HEAD_SHA $BASE_SHA -- CHANGELOG.md

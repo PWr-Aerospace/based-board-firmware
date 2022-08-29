@@ -12,3 +12,7 @@
 - Added CLion as a supported `IDE`. ([#10](https://github.com/Aerospace-ASP/Firmware/pull/10))
 - Added Dockerfiles for the projects environment to Docker Hub. ([#10](https://github.com/Aerospace-ASP/Firmware/pull/10))
 - Added a basic CI configuration with self hosted runners for testing. ([#10](https://github.com/Aerospace-ASP/Firmware/pull/10))
+
+### Fixed
+
+- Added a temporary fix for the flashing failure in the hardware CI job by retrying it once and adding 1 second delay. ([#36](https://github.com/Aerospace-ASP/Firmware/issues/36))

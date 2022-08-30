@@ -16,5 +16,6 @@ jobs:
             - run: cmake --version || sudo apt install -y cmake
             - run: arm-none-eabi-gcc --version || sudo apt install -y gcc-arm-none-eabi
             # Build the project and flash it
-            - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000
+            - run: sleep 1 # add a sleep command so that we wait out the blocking of the device
+            - run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc-toolchain.cmake .. && make -j`nproc` && st-flash write OBC.bin 0x8000000 || st-flash write OBC.bin 0x8000000
 

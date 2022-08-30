@@ -1,0 +1,20 @@
+name: 📜 Check CHANGELOG update on PR
+
+on:
+    pull_request:
+        branches:
+            - "develop"
+
+jobs:
+    formatting-check:
+        name: 📜 Check CHANGELOG update on PR
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Check changelog diff compared to target branch
+              # If the changelog is not edit the job should fail
+              run: |
+                  git fetch origin $GITHUB_BASE_REF
+                  HEAD_SHA=$(git rev-parse HEAD)
+                  BASE_SHA=$(git rev-parse origin/$GITHUB_BASE_REF)
+                  git diff --exit-code $HEAD_SHA $BASE_SHA -- CHANGELOG.md || exit 0 && exit 1

@@ -28,7 +28,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 SET(COMMON_COMPILE_FLGS "-Wall -Wextra -Wpedantic -O0 -g -fno-common -fmessage-length=0 -gdwarf-2")
-SET(COMMON_CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -DSTM32F401xx -mfloat-abi=hard -mfpu=fpv4-sp-d16")
+SET(COMMON_CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -DSTM32F412xx -mfloat-abi=hard -mfpu=fpv4-sp-d16")
 SET(LINKER_FLAGS "-Wl,--print-memory-usage,-Map=${PROJECT_NAME}.map,-gc-sections -lc -lm -specs=nano.specs -specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16")
 SET(LINKER_WRAPPER_FLAGS "-Wl,-wrap=malloc,-wrap=calloc,-wrap=free,-wrap=_malloc_r,-wrap=_calloc_r,-wrap=_free_r")
 

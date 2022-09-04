@@ -30,7 +30,7 @@ set(HAL
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
         )
 
-SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/prj/linker/STM32F401CCUX_FLASH.ld)
+SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/prj/linker/STM32F412RETX_FLASH.ld)
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T${LINKER_SCRIPT}")
 
 add_library(CMSIS
@@ -41,7 +41,7 @@ target_include_directories(CMSIS PUBLIC
         3rdparty/CMSIS/Device/ST/STM32F4xx/Include)
 
 add_library(STARTUP
-        3rdparty/CMSIS/Device/ST/STM32F4xx/Source/gcc/startup_stm32f401ccux.s)
+        3rdparty/CMSIS/Device/ST/STM32F4xx/Source/gcc/startup_stm32f412retx.s)
 
 add_executable(${ELF_FILE} ${OBC_SRC} ${HAL} ${LINKER_SCRIPT})
 

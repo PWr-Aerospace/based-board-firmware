@@ -28,6 +28,9 @@ set(HAL
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c
         )
 
 SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/prj/linker/STM32F412RETX_FLASH.ld)

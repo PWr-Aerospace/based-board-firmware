@@ -28,7 +28,9 @@ FRESULT SD_Open_file(const char *name)
 
 FRESULT SD_Puts(const char *data)
 {
-    return f_write(&fil, data, strlen(data), &bw);
+    FRESULT fres = f_write(&fil, data, strlen(data), &bw);
+    f_sync(&fil);
+    return fres;
 }
 
 FRESULT SD_Close_file()

@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal_flash.h"
 #include "stm32f4xx_hal_pwr_ex.h"
 #include "stm32f4xx_hal_rcc.h"
+#include "stm32f4xx_hal_uart.h"
 #include "fatfs.h"
 #include "string.h"
 

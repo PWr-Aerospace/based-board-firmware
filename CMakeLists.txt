@@ -7,6 +7,7 @@ option(GENERATE_VERSION_HEADER "Generate version header"  ON)
 # project settings
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(ELF_FILE ${PROJECT_NAME}.elf)
 set(HEX_FILE ${PROJECT_NAME}.hex)
@@ -30,6 +31,7 @@ set(HAL
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
+        3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
         3rdparty/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c
         )
 
@@ -70,11 +72,12 @@ add_executable(${ELF_FILE} ${OBC_SRC} ${HAL} ${LINKER_SCRIPT})
 
 target_include_directories(${ELF_FILE} PUBLIC
         3rdparty/STM32F4xx_HAL_Driver/Inc
+        3rdparty/CMSIS/Include
+        3rdparty/CMSIS/Device/ST/STM32F4xx/Include
         3rdparty/FATFS/Inc
         src/bsp
         src/bsp/configs
-        3rdparty/CMSIS/Include
-        3rdparty/CMSIS/Device/ST/STM32F4xx/Include
+        src/proxy/sd
         )
 
 target_link_libraries(${ELF_FILE} STARTUP CMSIS FATFS)

@@ -1,26 +1,24 @@
 #include "bsp.h"
 #include "fatfs.h"
+#include "sd_proxy.h"
+#include <cstring>
 
-FATFS fs;  // file system
-FIL fil; // File
-FILINFO fno;
-FRESULT fresult;  // result
-UINT br, bw;  // File read/write count*/
-
-char path[20] = "/";
-char name[20] = "test.txt";
-char toWrite[100] = "Hello world from BaseBoard v1.0!!!";
-UINT bytesWritten = 0;
+extern UART_HandleTypeDef huart1;
 
 int main()
 {
     bsp_init_cpu();
+    char buf[100] = {0};
+    char greeting[] = "BasedBoard v1.0 init\n\r";
+    HAL_UART_Transmit(&huart1, (const uint8_t *)greeting, strlen(greeting), 1000);
 
-    fresult = f_mount(&fs, path, 1);
-    fresult = f_open(&fil, name, FA_CREATE_ALWAYS | FA_READ | FA_WRITE);
-    f_write(&fil, toWrite, strlen(toWrite), &bytesWritten);
-    fresult = f_close(&fil);
-    fresult = f_mount(NULL, path, 1);
+    SD_Mount();
+    SD_Open_file("file.txt");
+    SD_Getline(buf, 100);
+    SD_Close_file();
+    SD_Unmount();
+
+    HAL_UART_Transmit(&huart1, (const uint8_t *)buf, strlen(buf), 1000);
 
     while(true)
     {

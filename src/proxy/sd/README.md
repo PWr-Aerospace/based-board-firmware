@@ -2,8 +2,9 @@
 
 ## Custom layer usage
 
-The purpose of this file is to provide a set of easy to use functions for file handling.
-A typical usage of those would look like this:
+The purpose of this file is to provide a set of easy to use functions for file handling. The main advantage is that you don't have to go into details how the FatFs library work.
+
+### Read a line from a file
 
 ```cpp
 #include "sd_proxy.h"
@@ -18,7 +19,7 @@ SD_Unmount();               // Delete the logical volume
 
 ```
 
-You can write data to a file easily as well:
+### Write a line to a file
 
 ```cpp
 #include "sd_proxy.h"

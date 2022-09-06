@@ -74,3 +74,19 @@ f_close(&fil);
 f_mount(NULL, "/",, 1);
 ```
 NOTE: you can call `f_write()` many times, but the files are update only when you call `f_close()` or `f_sync()`. If you don't sync your files periodically and the board loses power, you lose all of the unsynced data! 
+
+## Performance tests
+
+| File size | Writes | Total size | Time    |
+|------     |  ----  | ---        | ---     |
+| 1kB       | 1024   | 1 MB       | 350 ms  |
+| 128 B     | 8192   | 1 MB       | 2.5 s   |
+| 1kB       | 102400 | 100 MB     | 22.30 s |
+| 128 B     | 819200 | 100 MB     | 8.2 s   |
+
+Tests were performed using custom proxy functions. Clearly, the more frequent the file is updated, the shorter time it takes to complete the save.
+Small times weer measured using `HAL_GetTick()` function, the longer times using stopwatch.
+
+## Other
+
+The pin that should detect the SD card doesn't work properly, do not use it with Based Board v1.0.

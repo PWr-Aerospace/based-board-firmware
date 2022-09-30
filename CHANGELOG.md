@@ -14,6 +14,7 @@
 - Added a basic CI configuration with self hosted runners for testing. ([#10](https://github.com/Aerospace-ASP/Firmware/pull/10))
 - Added an issue/task template ([#44](https://github.com/Aerospace-ASP/Firmware/pull/44))
 - Added a PR template ([#40](https://github.com/Aerospace-ASP/Firmware/issues/40))
+- Added an ability to manually suppress warnings for cppcheck ([#51](https://github.com/Aerospace-ASP/Firmware/issues/51))
 
 ### Fixed
 

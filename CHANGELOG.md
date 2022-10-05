@@ -7,6 +7,7 @@
 
 ### Added
 
+- Added support for microSD card through SDIO. The FatFs library is supported ([#50](https://github.com/Aerospace-ASP/Firmware/pull/50))
 - Added basic target platform configuration (`ioc` files etc.). (`none`)
 - Added toolchain and the build process using `cmake` and `arm-none-eabi-gcc`. ([#10](https://github.com/Aerospace-ASP/Firmware/pull/10))
 - Added CLion as a supported `IDE`. ([#10](https://github.com/Aerospace-ASP/Firmware/pull/10))

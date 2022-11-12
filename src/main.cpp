@@ -5,8 +5,14 @@
 
 extern UART_HandleTypeDef huart1;
 
+int add(int a,int b)
+{
+    return a+b;
+}
+
 int main()
 {
+
     bsp_init_cpu();
     char buf[100] = {0};
     char greeting[] = "BasedBoard v1.0 init\n\r";
